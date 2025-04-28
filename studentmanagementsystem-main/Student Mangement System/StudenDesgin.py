@@ -132,7 +132,7 @@ class Student():
          if self.Roll_No_var.get()=="" or self.name_var.get()=="" :
              messagebox.showerror("Error","All fields are requried ")
          else:
-             con=pymysql.connect(host="localhost" , user="root" , password="#OMhari521_@*#", database="studentms")
+             con=pymysql.connect(host="localhost" , user="root" , password="", database="studentms")
              cur=con.cursor()
 
              cur.execute("insert into students values(%s,%s,%s,%s,%s,%s,%s)",(self.Roll_No_var.get(),
@@ -150,7 +150,7 @@ class Student():
              con.close()
              messagebox.showinfo("Success","Record has been inserted")
      def fetch_data(self):
-         con = pymysql.connect(host="localhost", user="root", password="#OMhari521_@*#", database="studentms")
+         con = pymysql.connect(host="localhost", user="root", password="", database="studentms")
          cur = con.cursor()
          cur.execute("select * from students ")
          rows = cur.fetchall()
@@ -185,7 +185,7 @@ class Student():
          self.txt_Address.insert(END, row[6])
 
      def update_data(self):
-         con = pymysql.connect(host="localhost", user="root", password="#OMhari521_@*#", database="studentms")
+         con = pymysql.connect(host="localhost", user="root", password="", database="studentms")
          cur = con.cursor()
          cur.execute("update students set name=%s,email=%s,gender=%s,contact=%s,dob=%s,address=%s where roll_no=%s", (
                                                                            self.name_var.get(),
@@ -203,7 +203,7 @@ class Student():
          con.close()
 
      def delete_data(self):
-         con = pymysql.connect(host="localhost", user="root", password="#OMhari521_@*#", database="studentms")
+         con = pymysql.connect(host="localhost", user="root", password="", database="studentms")
          cur = con.cursor()
          cur.execute("delete from students where roll_no=%s",self.Roll_No_var.get())
          con.commit()
@@ -213,7 +213,7 @@ class Student():
 
 
      def search_data(self):
-         con = pymysql.connect(host="localhost", user="root",password= "#OMhari521_@*#", database="studentms")
+         con = pymysql.connect(host="localhost", user="root",password= "", database="studentms")
          cur = con.cursor()
          cur.execute("select * from students where " + str(self.search_by.get())+" Like '%"+str(self.search_txt.get())+"%'")
          rows = cur.fetchall()
